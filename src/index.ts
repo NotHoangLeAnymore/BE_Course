@@ -1,4 +1,17 @@
 import express from "express";
+import mongoose from "mongoose";
+import { connectDB } from "./config/database";
+
+const startServer = async (): Promise<void> => {
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error("Error starting the server:", error);
+    process.exit(1);
+  }
+};
+
+startServer();
 
 const app = express();
 
