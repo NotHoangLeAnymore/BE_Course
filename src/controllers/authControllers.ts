@@ -31,7 +31,7 @@ export async function register(req: Request, res: Response) {
 
     const token = jwt.sign(
       { userId: user._id },
-      process.env["JWT_SECRETE"] as string,
+      process.env["JWT_SECRET"] as string,
       {
         expiresIn: "7h",
       },
@@ -70,7 +70,7 @@ export async function login(req: Request, res: Response) {
 
     const token = jwt.sign(
       { userId: String(user._id), name: user.name, email: user.email },
-      process.env["JWT_SECRETE"] as string,
+      process.env["JWT_SECRET"] as string,
       { expiresIn: "7d" },
     );
     return res.status(201).json({
